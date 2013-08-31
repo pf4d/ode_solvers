@@ -1,11 +1,13 @@
-#!/usr/bin/env python
+import sys
+sys.path.append('../')
+
 from scipy.integrate.ode import *
 import time
 
-import Euler as Euler
-import EulerRichardson as EulerRichardson
-import RungeKutta as RungeKutta
-import RungeKutta45 as RungeKutta45
+import src.Euler as Euler
+import src.EulerRichardson as EulerRichardson
+import src.RungeKutta as RungeKutta
+import src.RungeKutta45 as RungeKutta45
 
 from pylab import *
 from scipy.special import erf

@@ -1,11 +1,13 @@
-#!/usr/bin/env python
+import sys
+sys.path.append('../')
+
 from scipy.integrate.ode import *
  
-import Euler as Euler
-import EulerRichardson as EulerRichardson
-import EulerCromer as EulerCromer
-import Predictor as Predictor
-import RungeKutta as RungeKutta
+import src.Euler as Euler
+import src.EulerRichardson as EulerRichardson
+import src.EulerCromer as EulerCromer
+import src.Predictor as Predictor
+import src.RungeKutta as RungeKutta
  
 from numpy import arange,vstack,array, sqrt
 from pylab import *

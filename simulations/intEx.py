@@ -1,9 +1,11 @@
-#!/usr/bin/env python
+import sys
+sys.path.append('../')
+
 from scipy.integrate.ode import *
 
-import Euler as Euler
-import EulerRichardson as EulerRichardson
-import EulerCromer as EulerCromer
+import src.Euler as Euler
+import src.EulerRichardson as EulerRichardson
+import src.EulerCromer as EulerCromer
 
 from numpy import arange,vstack,array
 from pylab import plot,clf,show,xlabel,ylabel,title,grid,legend
