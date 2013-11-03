@@ -1,4 +1,4 @@
-from scipy.integrate.ode import IntegratorBase
+from scipy.integrate._ode import IntegratorBase
 from numpy import *
 from pylab import *
  
