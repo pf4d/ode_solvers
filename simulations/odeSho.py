@@ -1,7 +1,7 @@
 import sys
 sys.path.append('../')
 
-from scipy.integrate.ode import *
+from scipy.integrate._ode import *
  
 import src.Euler as Euler
 import src.EulerRichardson as EulerRichardson
