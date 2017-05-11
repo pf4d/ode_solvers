@@ -14,7 +14,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-from scipy.integrate.ode import IntegratorBase
+from scipy.integrate._ode import IntegratorBase
 from numpy import *
 
 class RungeKutta45(IntegratorBase):

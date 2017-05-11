@@ -1,13 +1,10 @@
-import sys
-sys.path.append('../')
-
 from scipy.integrate._ode import *
  
-import src.Euler as Euler
-import src.EulerRichardson as EulerRichardson
-import src.EulerCromer as EulerCromer
-import src.Predictor as Predictor
-import src.RungeKutta as RungeKutta
+import ode_solvers.Euler           as Euler
+import ode_solvers.EulerRichardson as EulerRichardson
+import ode_solvers.EulerCromer     as EulerCromer
+import ode_solvers.Predictor       as Predictor
+import ode_solvers.RungeKutta      as RungeKutta
  
 from numpy import arange,vstack,array, sqrt
 from pylab import *
@@ -127,28 +124,31 @@ yT = y0[0]*cos(sqrt(k/m)*time)
 
 
 # Plot the results
-fig = figure(figsize=(8,8))
+purp = '#880cbc'
+grun = '#77f343'
+
+fig = figure(figsize=(8,5))
 ax = fig.add_subplot(111, ylim=(-2.5,2.5))
 
 #text(0.5, 10, "discrepancy: %f" % (disc))
-plot(time, yfE[1:,0], label='Euler')
-plot(time, yfER[1:,0], label='Euler-Richardson')
-plot(time, yfEC[1:,0], label='Euler-Cromer')
-plot(time, yfRK[1:,0], label='Runge-Kutta')
-plot(time, yfPC[1:,0], label='Predictor-Corrector')
-plot(time,yT, 'r--', label='Analytical')
+plot(time, yfE[1:,0],  lw=2.0, color='k',  ls='-',  label='Euler')
+#plot(time, yfER[1:,0], lw=2.0, color='b',  ls='-',  label='Euler-Richardson')
+plot(time, yfEC[1:,0], lw=2.0, color=grun, ls='-',  label='Euler-Cromer')
+#plot(time, yfRK[1:,0], lw=2.0, color=purp, ls='-',  label='Runge-Kutta')
+plot(time, yfPC[1:,0], lw=2.0, color=purp, ls='-',  label='Predictor-Corrector')
+plot(time, yT,         lw=2.0, color='r',  ls='--', label='Analytical')
 
 # Legend formatting:
-leg = legend()
+leg = legend(loc='upper left')
 ltext  = leg.get_texts()
 frame  = leg.get_frame()
 setp(ltext, fontsize='small')
-frame.set_alpha(0.75)
+frame.set_alpha(0.0)
 frame.set_facecolor('0.80')
 
 # Main formatting:
-xlabel('Time (s)')
-ylabel('Position (m)')
+xlabel(r'$t$ [s]')
+ylabel(r'$x$ [m]')
 title('Simple Harmonic Oscillator')
 grid()
 
@@ -160,13 +160,15 @@ axins.set_ylim(y1, y2)
 xticks(visible=False)
 yticks(visible=False)
 mark_inset(ax, axins, loc1=1, loc2=4, fc="none", ec="0.5")
-plot(time, yfE[1:,0], label='Euler')
-plot(time, yfER[1:,0], label='Euler-Richardson')
-plot(time, yfEC[1:,0], label='Euler-Cromer')
-plot(time, yfRK[1:,0], label='Runge-Kutta')
-plot(time, yfPC[1:,0], label='Predictor-Corrector')
-plot(time,yT, 'r--', label='Analytical')
+plot(time, yfE[1:,0],  lw=2.0, color='k',  ls='-',  label='Euler')
+#plot(time, yfER[1:,0], lw=2.0, color='b',  ls='-',  label='Euler-Richardson')
+plot(time, yfEC[1:,0], lw=2.0, color=grun, ls='-',  label='Euler-Cromer')
+#plot(time, yfRK[1:,0], lw=2.0, color=purp, ls='-',  label='Runge-Kutta')
+plot(time, yfPC[1:,0], lw=2.0, color=purp, ls='-',  label='Predictor-Corrector')
+plot(time, yT,         lw=2.0, color='r',  ls='--', label='Analytical')
 
-show()
+tight_layout()
+savefig('sho.pdf')
+#show()
 
 
