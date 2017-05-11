@@ -159,7 +159,8 @@ axins.set_xlim(x1, x2)
 axins.set_ylim(y1, y2)
 xticks(visible=False)
 yticks(visible=False)
-mark_inset(ax, axins, loc1=1, loc2=4, fc="none", ec="0.5")
+grid()
+mark_inset(ax, axins, loc1=2, loc2=4, fc="none", ec="0.5")
 plot(time, yfE[1:,0],  lw=2.0, color='k',  ls='-',  label='Euler')
 #plot(time, yfER[1:,0], lw=2.0, color='b',  ls='-',  label='Euler-Richardson')
 plot(time, yfEC[1:,0], lw=2.0, color=grun, ls='-',  label='Euler-Cromer')
@@ -168,7 +169,7 @@ plot(time, yfPC[1:,0], lw=2.0, color=purp, ls='-',  label='Predictor-Corrector')
 plot(time, yT,         lw=2.0, color='r',  ls='--', label='Analytical')
 
 tight_layout()
-savefig('sho.pdf')
+savefig('sho_2.pdf')
 #show()
 
 
